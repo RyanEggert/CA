@@ -1,0 +1,9 @@
+# vsim 
+# Start time: 17:28:24 on Sep 12,2015
+# Loading work.hw1test
+# Two-Variable DeMorgan's Law Exhaustive Proof
+# A B | ~(AB) | ~A+~B | ~(A+B) | ~A~B | 
+# 0 0 |     1 |     1 |      1 |    1 |
+# 0 1 |     1 |     1 |      0 |    0 |
+# 1 0 |     1 |     1 |      0 |    0 |
+# 1 1 |     0 |     0 |      0 |    0 |
