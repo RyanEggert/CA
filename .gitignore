@@ -24,3 +24,4 @@ sc_dpiheader.h
 vsim.dbg
 
 ## Custom .gitignore ##
+*modelsim.ini

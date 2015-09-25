@@ -1,3 +1,10 @@
+// define gates with delays
+`define AND and #50
+`define OR or #50
+`define NOT not #50
+`define XOR xor #50
+`define XNOR xnor #50
+
 module behavioralDecoder(out0,out1,out2,out3, address0,address1, enable);
 output out0, out1, out2, out3;
 input address0, address1;
@@ -39,3 +46,5 @@ enable=1;addr0=1;addr1=1; #1000
 $display("%b  %b  %b |  %b  %b  %b  %b | O3 Only", enable, addr0, addr1, out0, out1, out2, out3);
 end
 endmodule
+
+
