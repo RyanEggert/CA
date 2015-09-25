@@ -1,0 +1,66 @@
+# Loading work.testFullAdder
+# Loading work.behavioralFullAdder
+# Loading work.structuralFullAdder
+#  Inputs  | Behavioral | Structural | Expected
+# A B C_In | Sum C_Out  | Sum C_Out  |Sum C_Out
+# 0 0 0    |  0  0      |  0  0      | 0   0
+# 0 0 1    |  1  0      |  1  0      | 1   0
+# 0 1 0    |  1  0      |  1  0      | 1   0
+# 0 1 1    |  0  1      |  0  1      | 0   1
+# 1 0 0    |  1  0      |  1  0      | 1   0
+# 1 0 1    |  0  1      |  0  1      | 0   1
+# 1 1 0    |  0  1      |  0  1      | 0   1
+# 1 1 1    |  1  1      |  1  1      | 1   1
+
+# Start time: 15:36:52 on Sep 25,2015
+# Loading work.testMultiplexer
+# Loading work.behavioralMultiplexer
+# Loading work.structuralMultiplexer
+#          Inputs         | Beh.| Str.| Exp.
+# In3 In2 In1 In0 | A1 A0 | Out | Out | Out 
+# 1   1   1   0   | 0  0  | 0   | 0   | 0 
+# 0   0   0   1   | 0  0  | 1   | 1   | 1 
+# 0   1   1   0   | 0  0  | 0   | 0   | 0 
+# 1   0   1   0   | 0  0  | 0   | 0   | 0 
+# 1   1   0   0   | 0  0  | 0   | 0   | 0 
+# 1   0   0   1   | 0  0  | 1   | 1   | 1 
+# 0   1   0   1   | 0  0  | 1   | 1   | 1 
+# 0   0   1   1   | 0  0  | 1   | 1   | 1 
+# 1   1   0   1   | 0  1  | 0   | 0   | 0 
+# 0   0   1   0   | 0  1  | 1   | 1   | 1 
+# 0   1   0   1   | 0  1  | 0   | 0   | 0 
+# 1   0   0   1   | 0  1  | 0   | 0   | 0 
+# 1   1   0   0   | 0  1  | 0   | 0   | 0 
+# 1   0   1   0   | 0  1  | 1   | 1   | 1 
+# 0   1   1   0   | 0  1  | 1   | 1   | 1 
+# 0   0   1   1   | 0  1  | 1   | 1   | 1 
+# 1   0   1   1   | 1  0  | 0   | 0   | 0 
+# 0   1   0   0   | 1  0  | 1   | 1   | 1 
+# 0   0   1   1   | 1  0  | 0   | 0   | 0 
+# 1   0   0   1   | 1  0  | 0   | 0   | 0 
+# 1   0   1   0   | 1  0  | 0   | 0   | 0 
+# 1   1   0   0   | 1  0  | 1   | 1   | 1 
+# 0   1   1   0   | 1  0  | 1   | 1   | 1 
+# 0   1   0   1   | 1  0  | 1   | 1   | 1 
+# 0   1   1   1   | 1  1  | 0   | 0   | 0 
+# 1   0   0   0   | 1  1  | 1   | 1   | 1 
+# 0   0   1   1   | 1  1  | 0   | 0   | 0 
+# 0   1   0   1   | 1  1  | 0   | 0   | 0 
+# 0   1   1   0   | 1  1  | 0   | 0   | 0 
+# 1   1   0   0   | 1  1  | 1   | 1   | 1 
+# 1   0   1   0   | 1  1  | 1   | 1   | 1 
+# 1   0   0   1   | 1  1  | 1   | 1   | 1 
+
+# Loading work.testDecoder
+# Loading work.behavioralDecoder
+# Loading work.structuralDecoder
+#  Inputs | Behavioral  | Structural  | Expected
+# En A0 A1| O0 O1 O2 O3 | O0 O1 O2 O3 | Outputs 
+# 0  0  0 |  0  0  0  0 |  0  0  0  0 | All false
+# 0  1  0 |  0  0  0  0 |  0  0  0  0 | All false
+# 0  0  1 |  0  0  0  0 |  0  0  0  0 | All false
+# 0  1  1 |  0  0  0  0 |  0  0  0  0 | All false
+# 1  0  0 |  1  0  0  0 |  1  0  0  0 | O0 Only
+# 1  1  0 |  0  1  0  0 |  0  1  0  0 | O1 Only
+# 1  0  1 |  0  0  1  0 |  0  0  1  0 | O2 Only
+# 1  1  1 |  0  0  0  1 |  0  0  0  1 | O3 Only
