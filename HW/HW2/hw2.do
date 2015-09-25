@@ -16,3 +16,5 @@ sim:/testDecoder/out3
 
 vsim -voptargs="+acc" testFullAdder
 run -all
+vsim -voptargs="+acc" testDecoder
+run -all

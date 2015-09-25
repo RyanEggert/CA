@@ -25,8 +25,8 @@ wire naddr0, naddr1;
 `NOT not1(naddr1, address1);
 
 `AND and0(and0out, in0, naddr0, naddr1); // Woo, three input ANDs!
-`AND and1(and1out, in1, naddr0, address1); 
-`AND and2(and2out, in2, address0, naddr1); 
+`AND and1(and1out, in1, address0, naddr1); 
+`AND and2(and2out, in2, naddr0, address1); 
 `AND and3(and3out, in3, address0, address1);
 
 `OR or0(out, and0out, and1out, and2out, and3out); 
