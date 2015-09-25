@@ -37,21 +37,22 @@ structuralDecoder str_decoder (str_out0, str_out1, str_out2, str_out3, addr0, ad
 initial begin
 $display(" Inputs | Behavioral  | Structural  | Expected");
 $display("En A0 A1| O0 O1 O2 O3 | O0 O1 O2 O3 | Outputs ");
-enable=0;addr0=0;addr1=0; #1000 
+// At most, signal travels through 2 gates. Set durations to a bit over 2 times the gate delay.
+enable=0;addr0=0;addr1=0; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | All false", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=0;addr0=1;addr1=0; #1000
+enable=0;addr0=1;addr1=0; #125
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | All false", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=0;addr0=0;addr1=1; #1000 
+enable=0;addr0=0;addr1=1; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | All false", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=0;addr0=1;addr1=1; #1000 
+enable=0;addr0=1;addr1=1; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | All false", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=1;addr0=0;addr1=0; #1000 
+enable=1;addr0=0;addr1=0; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | O0 Only", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=1;addr0=1;addr1=0; #1000 
+enable=1;addr0=1;addr1=0; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | O1 Only", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=1;addr0=0;addr1=1; #1000 
+enable=1;addr0=0;addr1=1; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | O2 Only", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
-enable=1;addr0=1;addr1=1; #1000 
+enable=1;addr0=1;addr1=1; #125 
 $display("%b  %b  %b |  %b  %b  %b  %b |  %b  %b  %b  %b | O3 Only", enable, addr0, addr1, beh_out0, beh_out1, beh_out2, beh_out3,  str_out0, str_out1, str_out2, str_out3);
 end
 endmodule

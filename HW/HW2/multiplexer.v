@@ -45,29 +45,81 @@ structuralMultiplexer str_multip(str_out, address0, address1, in0, in1, in2, in3
 initial begin
 $display("         Inputs         | Beh.| Str.| Exp.");
 $display("In3 In2 In1 In0 | A1 A0 | Out | Out | Out ");
-
+// At most, signal travels through 3 gates. Set durations to a bit over 3 times the gate delay.
 // Test Input 0
-in3=1; in2=1; in1=1; in0=0; address1=0; address0=0; #1000 
+in3=1; in2=1; in1=1; in0=0; address1=0; address0=0; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
-in3=0; in2=0; in1=0; in0=1; address1=0; address0=0; #1000 
+in3=0; in2=0; in1=0; in0=1; address1=0; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+// Show that Inputs 1-3 do not affect the output
+in3=0; in2=1; in1=1; in0=0; address1=0; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=1; in0=0; address1=0; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=1; in1=0; in0=0; address1=0; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=0; in0=1; address1=0; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=1; in1=0; in0=1; address1=0; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=0; in1=1; in0=1; address1=0; address0=0; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
 
 // Test Input 1
-in3=1; in2=1; in1=0; in0=1; address1=0; address0=1; #1000 
+in3=1; in2=1; in1=0; in0=1; address1=0; address0=1; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
-in3=0; in2=0; in1=1; in0=0; address1=0; address0=1; #1000 
+in3=0; in2=0; in1=1; in0=0; address1=0; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+// Show that Input0, Inputs 2-3 do not affect the output
+in3=0; in2=1; in1=0; in0=1; address1=0; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=0; in0=1; address1=0; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=1; in1=0; in0=0; address1=0; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=1; in0=0; address1=0; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=1; in1=1; in0=0; address1=0; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=0; in1=1; in0=1; address1=0; address0=1; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
 
 // Test Input 2
-in3=1; in2=0; in1=1; in0=1; address1=1; address0=0; #1000 
+in3=1; in2=0; in1=1; in0=1; address1=1; address0=0; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
-in3=0; in2=1; in1=0; in0=0; address1=1; address0=0; #1000 
+in3=0; in2=1; in1=0; in0=0; address1=1; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+// Show that Inputs 0-1, Input 3 do not affect the output
+in3=0; in2=0; in1=1; in0=1; address1=1; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=0; in0=1; address1=1; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=1; in0=0; address1=1; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=1; in1=0; in0=0; address1=1; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=1; in1=1; in0=0; address1=1; address0=0; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=1; in1=0; in0=1; address1=1; address0=0; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
 
 // Test Input 3
-in3=0; in2=1; in1=1; in0=1; address1=1; address0=1; #1000 
+in3=0; in2=1; in1=1; in0=1; address1=1; address0=1; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
-in3=1; in2=0; in1=0; in0=0; address1=1; address0=1; #1000 
+in3=1; in2=0; in1=0; in0=0; address1=1; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+// Show that Inputs 0-2 do not affect the output
+in3=0; in2=0; in1=1; in0=1; address1=1; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=1; in1=0; in0=1; address1=1; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=0; in2=1; in1=1; in0=0; address1=1; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 0 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=1; in1=0; in0=0; address1=1; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=1; in0=0; address1=1; address0=1; #175 
+$display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
+in3=1; in2=0; in1=0; in0=1; address1=1; address0=1; #175 
 $display("%b   %b   %b   %b   | %b  %b  | %b   | %b   | 1 ", in3, in2, in1, in0, address1, address0, beh_out, str_out);
 end
 endmodule

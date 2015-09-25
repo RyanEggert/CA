@@ -36,21 +36,22 @@ initial begin
 // Completely test behavioral and structural adders
 $display(" Inputs  | Behavioral | Structural | Expected");
 $display("A B C_In | Sum C_Out  | Sum C_Out  |Sum C_Out");
-carryin=0;a=0;b=0; #1000 
+// At most, signal travels through 3 gates. Set durations to a bit over 3 times the gate delay.
+carryin=0;a=0;b=0; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 0   0", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=1;a=0;b=0; #1000 
+carryin=1;a=0;b=0; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 1   0", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=0;a=0;b=1; #1000 
+carryin=0;a=0;b=1; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 1   0", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=1;a=0;b=1; #1000 
+carryin=1;a=0;b=1; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 0   1", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=0;a=1;b=0; #1000 
+carryin=0;a=1;b=0; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 1   0", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=1;a=1;b=0; #1000 
+carryin=1;a=1;b=0; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 0   1", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=0;a=1;b=1; #1000 
+carryin=0;a=1;b=1; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 0   1", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
-carryin=1;a=1;b=1; #1000 
+carryin=1;a=1;b=1; #175 
 $display("%b %b %b    |  %b  %b      |  %b  %b      | 1   1", a, b, carryin, beh_sum, beh_carryout, str_sum, str_carryout);
 // Reference truth table verified from
 // http://www.electronicshub.org/wp-content/uploads/2014/08/Truth-Table-for-Full-Adder.jpg
