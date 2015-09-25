@@ -29,7 +29,7 @@ reg a, b, carryin;
 wire str_sum, str_carryout;
 wire beh_sum, beh_carryout;
 behavioralFullAdder beh_adder(beh_sum, beh_carryout, a, b, carryin);
-structuralFullAdder str_testadder(str_sum, str_carryout, a, b, carryin);
+structuralFullAdder str_adder(str_sum, str_carryout, a, b, carryin);
 
 initial begin
 // Begin Combined Testbench
