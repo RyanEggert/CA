@@ -156,6 +156,109 @@ output reg		Clk
     $display("Test Case 3 Failed");
   end
 
+  // Test Case 4:
+  //    Test decoder. If decoder is broken, we will write to the improper
+  //    register(s). To test, try to write '1' to register 1. If 1 is read
+  //    from at least one other register, there has been a problem
+  WriteRegister = 5'd1;
+  WriteData = 32'd1;
+
+  ReadRegister1 = 0;
+  ReadRegister2 = 2;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 3;
+  ReadRegister2 = 4;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 5;
+  ReadRegister2 = 6;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 7;
+  ReadRegister2 = 8;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 9;
+  ReadRegister2 = 10;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 11;
+  ReadRegister2 = 12;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 13;
+  ReadRegister2 = 14;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 15;
+  ReadRegister2 = 16;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 17;
+  ReadRegister2 = 18;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 19;
+  ReadRegister2 = 20;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 21;
+  ReadRegister2 = 22;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 23;
+  ReadRegister2 = 24;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
   // All done!  Wait a moment and signal test completion.
   #5
   endtest = 1;
