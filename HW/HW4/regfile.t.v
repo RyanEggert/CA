@@ -110,6 +110,7 @@ output reg		Clk
   // Test Case 1: 
   //   Write '42' to register 2, verify with Read Ports 1 and 2
   //   (Passes because example register file is hardwired to return 42)
+    $display("Test 1: testing read/write");
   WriteRegister = 5'd2;
   WriteData = 32'd42;
   RegWrite = 1;
@@ -126,6 +127,7 @@ output reg		Clk
   // Test Case 2: 
   //   Write '15' to register 2, verify with Read Ports 1 and 2
   //   (Fails with example register file, but should pass with yours)
+    $display("Test 2: testing read/write");
   WriteRegister = 5'd2;
   WriteData = 32'd15;
   RegWrite = 1;
@@ -138,6 +140,21 @@ output reg		Clk
     $display("Test Case 2 Failed");
   end
 
+  // Test Case 3:
+  //    Input '29' to register 12, but write is disabled.
+  //    Try to read from register 12, should not see '29'.
+  $display("Test 3: testing write enable");
+  WriteRegister=5'd12;
+  WriteData = 32'd29;
+  RegWrite = 0;
+  ReadRegister1 = 5'd12;
+  ReadRegister2 = 5'd12;
+  #5 Clk=1; #5 Clk=0;
+
+  if ((ReadData1 == 29) || (ReadData2 == 29)) begin
+    dutpassed = 0;
+    $display("Test Case 3 Failed");
+  end
 
   // All done!  Wait a moment and signal test completion.
   #5
