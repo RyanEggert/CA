@@ -160,9 +160,10 @@ output reg		Clk
   //    Test decoder. If decoder is broken, we will write to the improper
   //    register(s). To test, try to write '1' to register 1. If 1 is read
   //    from at least one other register, there has been a problem
+  $display("Test 4: testing decoder + all registers");
   WriteRegister = 5'd1;
   WriteData = 32'd1;
-
+  // For loops only work in SystemVerilog? Hmm?
   ReadRegister1 = 0;
   ReadRegister2 = 2;
   #5 Clk=1; #5 Clk=0; 
@@ -258,6 +259,86 @@ output reg		Clk
     dutpassed = 0;
     $display("Test Case 4 Failed");
     end
+
+  ReadRegister1 = 25;
+  ReadRegister2 = 26;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 27;
+  ReadRegister2 = 28;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 29;
+  ReadRegister2 = 30;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+  ReadRegister1 = 31;
+  ReadRegister2 = 31;
+  #5 Clk=1; #5 Clk=0; 
+  if ((ReadData1==1 ) || (ReadData2==1)) begin
+    dutpassed = 0;
+    $display("Test Case 4 Failed");
+    end
+
+    // Test Case 5:
+    //    Check the zero register. Attempt to write and read.
+    //    Try to write '500' to register 0. Try to read from
+    //    register 0.
+    $display("Test 5: testing zero register");
+    WriteRegister=5'd0;
+    WriteData = 32'd500;
+    RegWrite = 1;
+    ReadRegister1 = 5'd0;
+    ReadRegister2 = 5'd0;
+    #5 Clk=1; #5 Clk=0;
+
+    if ((ReadData1 != 0) || (ReadData2 != 0)) begin
+      dutpassed = 0;
+      $display("Test Case 5 Failed");
+    end
+
+  // Test Case 6:
+  //    Check the read ports. Attempt to write and read.
+  //    Try to write '500' to register 0. Try to read from
+  //    register 0.
+  $display("Test 6: testing ports");
+  $display("Test 6.1: Write and confirm read to register 17");
+  WriteRegister=5'd17;
+  WriteData = 32'd1234;
+  RegWrite = 1;
+  ReadRegister1 = 5'd17;
+  ReadRegister2 = 5'd17;
+  #5 Clk=1; #5 Clk=0;
+
+  if ((ReadData1 != 1234) || (ReadData2 != 1234)) begin
+    dutpassed = 0;
+    $display("Test Case 6.1 Failed");
+  end
+
+  $display("Test 6.2: check that other ports do not read from port 17 (e.g.)");
+  WriteRegister=5'd17;
+  WriteData = 32'd1334;
+  RegWrite = 0;
+  ReadRegister1 = 5'd7;
+  ReadRegister2 = 5'd30;
+  #5 Clk=1; #5 Clk=0;
+
+  if ((ReadData1 == 1234) || (ReadData2 == 1234)) begin
+    dutpassed = 0;
+    $display("Test Case 6.2 Failed");
+  end
 
   // All done!  Wait a moment and signal test completion.
   #5
