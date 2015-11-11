@@ -18,7 +18,7 @@ input		RegWrite,	// Enable writing of register when High
 input		Clk		// Clock (Positive Edge Triggered)
 );
 
-wire[31:0] wrenables;  // Ouput of decoder, used to set write enables on each register.
+wire[31:0] wrenables;  // Output of decoder, used to set write enables on each register.
 
 wire[31:0] reg31out;
 wire[31:0] reg30out;
